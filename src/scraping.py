@@ -9,7 +9,10 @@ import os
 def scrape_website(url):
     # Set up Edge options to run in headless mode
     options = Options()
-    options.headless = True
+    options.add_argument('--headless')
+    options.add_argument('--disable-gpu')  # Disable GPU acceleration
+    options.add_argument('--no-sandbox')   # Bypass OS security model (Linux only)
+    options.add_argument('--disable-dev-shm-usage')  # Overcome limited resource problems
 
     # Initialize Edge WebDriver with the specified service and options
     service = EdgeService(EdgeChromiumDriverManager().install())
@@ -35,7 +38,6 @@ def scrape_website(url):
     scraped_data = ""
 
     # Create a text file and write the extracted data
-    
     for p in paragraphs:
         scraped_data += p.text + '\n'
         
@@ -62,7 +64,3 @@ def scrape_website(url):
     print(scraped_data)
 
     return scraped_data
-
-# x = scrape_website("https://www.amazon.eg/-/en/Laptops/b?ie=UTF8&node=21832907031")
-# with open("scraped_data.txt", mode="w") as file:
-#         file.write(x + '\n')
