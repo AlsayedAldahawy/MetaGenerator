@@ -1,0 +1,85 @@
+<div class="caption">
+    <h1>Add Your Pages Links</h1>
+    <p>Enter a URL and click "Add Page" to append it to the list.</p>
+</div>
+
+<div class="links-page">
+    <form id="linkForm" action="/multiLinks" method="post">
+        <div class="input-container">
+            <input type="url" id="linkInput" placeholder="Enter a URL" required>
+            <button type="button" onclick="addLink()" title="Add page">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="#ffffff" width="12px" height="12px"
+                    viewBox="0 0 1920 1920" stroke="#ffffff">
+
+                    <g id="SVGRepo_bgCarrier" stroke-width="0" />
+
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" />
+
+                    <g id="SVGRepo_iconCarrier">
+                        <g fill-rule="evenodd">
+                            <path
+                                d="M0 176.142 176.13.012l960.12 960.119L176.13 1920 0 1743.87l783.864-783.739L0 176.142Z" />
+                            <path
+                                d="M784 176.142 960.13.012l960.12 960.119L960.13 1920 784 1743.87l783.86-783.739L784 176.142Z" />
+                        </g>
+                    </g>
+
+                </svg>
+            </button>
+
+        </div>
+        <br><br>
+        <button type="submit">Submit Pages</button>
+    </form>
+
+    <div class="list-section">
+        <h2 class="list-header">Pages List</h2>
+        <div id="linksContainer"></div>
+    </div>
+</div>
+
+
+
+<script>
+    let linksArray = [];
+    let required = true
+
+    function addLink() {
+        const linkInput = document.getElementById('linkInput');
+        const linksContainer = document.getElementById('linksContainer');
+
+        if (linkInput.value) {
+            // Add the link to the array
+            linkInput.removeAttribute('required');
+            linksArray.push(linkInput.value);
+
+            // Clear the input field
+            linkInput.value = '';
+
+            // Update the links container
+            updateLinksContainer(linksContainer);
+        }
+    }
+
+    function updateLinksContainer(container) {
+        // Clear the existing links
+        container.innerHTML = '';
+
+        // Append each link in the array to the container
+        linksArray.forEach(link => {
+            const linkItem = document.createElement('div');
+            linkItem.className = 'link-item';
+            linkItem.textContent = link;
+            container.appendChild(linkItem);
+        });
+    }
+
+    document.getElementById('linkForm').addEventListener('submit', function (event) {
+        required = false
+        const hiddenInput = document.createElement('input');
+        hiddenInput.type = 'hidden';
+        hiddenInput.name = 'links';
+        hiddenInput.value = JSON.stringify(linksArray);
+        this.appendChild(hiddenInput);
+    });
+</script>

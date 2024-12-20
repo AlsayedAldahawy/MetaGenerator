@@ -61,6 +61,4 @@ def scrape_website(url):
 
     driver.quit()
 
-    print(scraped_data)
-
     return scraped_data

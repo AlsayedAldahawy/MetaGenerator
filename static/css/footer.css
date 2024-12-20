@@ -1,0 +1,39 @@
+footer {
+    width: 100%;
+    /* padding: 20px; */
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+    position: fixed;
+    bottom: 0%;
+    justify-items: center;
+  }
+  
+  .footer-section {
+    width: 20%;
+  }
+  
+  .footer-section a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .footer-section a:hover {
+    text-decoration: underline;
+  }
+  
+  footer .footer-section:nth-child(odd) {
+    border-radius: 5px;
+  }
+  
+  footer .footer-section:nth-child(even) {
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  footer .footer-section {
+    display: inline-block;
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+  }

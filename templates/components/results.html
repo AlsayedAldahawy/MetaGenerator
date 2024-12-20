@@ -1,0 +1,10 @@
+<div class="results">
+    <h1>Results</h1>
+    {% if messages %}
+    <div class="message">
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+{% endif %}
+</div>

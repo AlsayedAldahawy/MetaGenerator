@@ -1,0 +1,41 @@
+header {
+    position: fixed;
+    top: 0;
+    color: #007bff;
+    background-color: #007bff;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    z-index: 999;
+}
+
+header h1 {
+    color: white;
+    cursor: pointer;
+
+}
+
+.logo {
+    width: fit-content;
+    justify-items: center;
+    align-content: center;
+}
+
+.navigation a{
+    color: white;
+    text-decoration: none;
+
+}
+
+.navigation{
+    color: white;
+    width: fit-content;
+    justify-items: center;
+    align-content: center;
+}
+
+.navigation a:hover{
+    text-decoration:underline;
+
+}
